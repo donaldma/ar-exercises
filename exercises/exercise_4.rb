@@ -19,4 +19,4 @@ Store.create(name: "Yaletown", annual_revenue: 430000, mens_apparel: true, women
   puts store.annual_revenue
 end
 
-@womens_apparel = Store.where(womens_apparel: true, annual_revenue: { minimum: 1000000})
+@womens_apparel = Store.where(womens_apparel: true).where("annual_revenue > ?", 1000000)
