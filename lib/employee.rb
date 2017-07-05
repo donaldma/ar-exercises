@@ -4,4 +4,12 @@ class Employee < ActiveRecord::Base
   validates :last_name, presence: true
   validates :hourly_rate, :inclusion => 40..200
   validates :hourly_rate, numericality: { only_integer: true }
+
+  private
+
+  before_create do
+    self.password = (0...8).map { (65 + rand(26)).chr }.join
+    puts self.password
+  end
+
 end
